@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+    proxy:
+        build: ./proxy
+        container_name: proxy
+        ports:
+            - 80:80
+        networks:
+            - frontend-network
+        restart: always
+    mysqldb:
+        build: ./mysql
+        container_name: mysqldb
+        networks: 
+            - backend-network
+        environment:
+            MYSQL_ROOT_PASSWORD: passw0rd
+            MYSQL_DATABASE: webapp
+            MYSQL_USER: webappuser
+            MYSQL_PASSWORD: webapp_passw0rd
+        # ports:
+        #     - 3306:3306
+        volumes: 
+            - mysql_db_data:/var/lib/mysql
+    webserver:
+        build: ./webserver
+        restart: always
+        container_name: webserver
+        networks:
+            - backend-network
+            - frontend-network
+        # ports:
+        #     - 5000:5000
+        links:
+            - mysqldb
+        # volumes:
+        #     - ./app:/app
+volumes:
+    mysql_db_data:
+
+networks:
+    backend-network:
+    frontend-network:

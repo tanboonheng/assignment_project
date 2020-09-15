@@ -1,0 +1,18 @@
+<html>
+    <h1>Welcome to my simple webpage!</h1>
+        {% if message %}
+        <h3> {{ message }}</h3>
+        {% endif %}
+    <form method="POST" action="/">
+        First name 
+        <input type="text" name="firstname" />
+        <br>
+        Last name 
+        <input type="text" name="lastname" />
+        <br>
+        Username <input type="text" name="username" />
+        <br>
+        <input type="submit" value="Create">
+    </form>
+    <p>Click <a class ="ml-2" href="{{url_for('search')}}"> here</a> to search for a user</p>
+</html>

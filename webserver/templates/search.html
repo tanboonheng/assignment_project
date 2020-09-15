@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <h1>Search for an username below!</h1>
+        {% if error %}
+        <h3> {{ error }}</h3>
+        {% endif %}
+        <form action="/search" method="POST">
+            Username <input type="text" name="username" />
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </body>
+</html>
