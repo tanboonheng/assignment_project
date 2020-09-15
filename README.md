@@ -16,6 +16,9 @@ For example:
 
 192.168.18.4 webapp.com
 
-# How to run this application
-Run in this directory: 
+# How to run this application in your linux server
+git clone https://github.com/tanboonheng/assignment_project.git
+
+cd assignment_project
+
 docker-compose up
